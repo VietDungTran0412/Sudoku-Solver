@@ -324,7 +324,7 @@ class SudokuGameplay < Gosu::Window
 				end
 				found_col = "#{grid[row][col].val} found in col #{col}"
 				found_row = "#{grid[row][col].val} found in row #{row}"
-				found_box = "#{grid[row][col].val} found in box #{row} - #{col}"
+				found_box = "#{grid[row][col].val} found in box #{row-row%3} - #{col-col%3}"
 				if set.include?(found_col) || set.include?(found_row) || set.include?(found_box)
 					return false
 				else
@@ -782,7 +782,7 @@ class SudokuGameplay < Gosu::Window
 	end
 	
 	# Draw the level of difficulty on screen
-	def draw_complexity(table)
+	def display_complexity(table)
 		x = 100
 		y = 20
 		font = Gosu::Font.new(50)
@@ -879,7 +879,7 @@ class SudokuGameplay < Gosu::Window
 	end
 	
 	# Display the current problem number
-	def draw_problem_index(problems)
+	def display_problem_index(problems)
 		cur = get_current_problem()
 		difficulty = get_difficulty(@sudoku_table)
 		head = problems[difficulty].head
@@ -983,10 +983,10 @@ class SudokuGameplay < Gosu::Window
 		if @is_solved == true
 			display_passed_message()
 		end
-		draw_complexity(@sudoku_table)
+		display_complexity(@sudoku_table)
 		next_problem_button(@gameplay_scene_buttons)
 		prev_problem_button(@gameplay_scene_buttons)
-		draw_problem_index(@problems)
+		display_problem_index(@problems)
 	end
 
 	# Initialize variable in start scene

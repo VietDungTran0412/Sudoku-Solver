@@ -4,30 +4,30 @@
 class Node
 	attr_accessor :data,:next,:prev
 	def initialize(data)
-			@data = data
-			@next = nil
-			@prev = nil
+		@data = data
+		@next = nil
+		@prev = nil
 	end
 end
 
 class CircularLinkedList
 	attr_accessor :head
 	def initialize
-			@head = nil
+		@head = nil
 	end
 end
 
 # Insert new node at the end of list
 def insert_at_end(head,val)
 	if head == nil
-			head = Node.new(val)
-			head.next = head
-			head.prev = head
-			return head
+		head = Node.new(val)
+		head.next = head
+		head.prev = head
+		return head
 	end
 	itr = head
 	while itr.next != head
-			itr = itr.next
+		itr = itr.next
 	end
 	node = Node.new(val)
 	itr.next = node
