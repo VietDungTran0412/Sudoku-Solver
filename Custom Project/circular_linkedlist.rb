@@ -1,3 +1,6 @@
+# Circular Linked List Implementation
+
+# Node of each record
 class Node
 	attr_accessor :data,:next,:prev
 	def initialize(data)
@@ -14,6 +17,7 @@ class CircularLinkedList
 	end
 end
 
+# Insert new node at the end of list
 def insert_at_end(head,val)
 	if head == nil
 			head = Node.new(val)
@@ -33,6 +37,7 @@ def insert_at_end(head,val)
 	return head
 end
 
+# Get the length of linked list
 def get_length(head)
 	count  = 1
 	itr = head
@@ -43,6 +48,7 @@ def get_length(head)
 	return count
 end
 
+# Get specific index
 def get_index(head,node)
 	loc  = 1
 	itr = head
