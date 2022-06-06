@@ -5,7 +5,7 @@
 # *			Tutor: Nazar Najam																				
 # *			Professor: Matthew Mitchell																	
 # *			Custom program: Sudoku Solver 														
-# *			Custom project: Backtracking and its application																														
+# *			Custom project: Backtracking and Its Application in Solving Sudoku Problem Recursively																														
 # -----------------------------------------------------------------
 
 #                        Reflection
@@ -111,7 +111,7 @@ class SudokuGameplay < Gosu::Window
 		img.draw(img_x,img_y,1.25,1.5,Zorder::PLAYER)
 	end
 
-	def draw_tutorial()
+	def draw_tutorial
 		path = "./image/sample.png"
 		draw_table_sample(path)
 		display_rules()
@@ -236,14 +236,13 @@ class SudokuGameplay < Gosu::Window
 	# into the square records. The function get 3 arguments: square, its row
 	# and its column
 	def draw_square(square,row,col)
-		padding = 5
-		margin = 100
+		f_pos = 100
 		square_size = 96
 		col = square.col
 		row = square.row
 		val = square.val
-		x = margin + col*margin
-		y = margin + row*margin
+		x = f_pos + col*f_pos
+		y = f_pos + row*f_pos
 		square.x = x
 		square.y = y
 		color = square.color
@@ -1030,7 +1029,7 @@ class SudokuGameplay < Gosu::Window
 		button_y = 500
 		height = 100
 		color = get_button_color()
-		text = "Start"
+		text = "Play"
 		text_color = get_font_color()
 		font_size = 80
 		buttons[:start] = Button.new(text,button_x,button_y,width,height,text_color)
@@ -1161,11 +1160,11 @@ class SudokuGameplay < Gosu::Window
 		draw_hard_button(@diff_scene_buttons)
 		draw_expert_button(@diff_scene_buttons)
 		draw_evil_button(@diff_scene_buttons)
-		draw_difficult_title()
+		draw_difficulty_title()
 	end
 	
 	# Draw the scene title
-	def draw_difficult_title()
+	def draw_difficulty_title()
 		message = "Please choose difficulty"
 		width = 1600
 		font = Gosu::Font.new(80)
