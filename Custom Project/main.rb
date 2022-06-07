@@ -33,6 +33,7 @@ class SudokuGameplay < Gosu::Window
 	def initialize
 		super(SCREEN_WIDTH,SCREEN_HEIGHT)
 		@scene = :menu                     # Scene will be set to menu - start scene where user can choose play or exit the game
+		@problems = read_problems()
 		initialize_gameplay()							 # Initialize variable for gameplay scene
 		initialize_start()								 # Initialize variable at the start scene
 		initialize_difficulty()						 # Initialize variable for choosing difficulty scene
@@ -163,7 +164,6 @@ class SudokuGameplay < Gosu::Window
 	# Initialize variables when @scene = gameplay
 	def initialize_gameplay()
 		self.caption = "Sudoku Solver"
-		@problems = read_problems()
 		@selected_square = nil
 		@is_clicked_solver = false
 		@gameplay_scene_buttons = Hash.new()
@@ -766,19 +766,17 @@ class SudokuGameplay < Gosu::Window
 	# The passed message will be displayed if the user passed the
 	# problem without clicking on the solver button
 	def display_passed_message()
-		# if @is_solved == true
-			font = Gosu::Font.new(60)
-			font_x = 1150
-			font_y = 100
-			margin_right = 20
-			message = 'Passed'
-			ticked_y = font_y+5
-			ticked_x = font_x + font.text_width(message)+margin_right
-			color = get_font_color()
-			font.draw(message,font_x,font_y,Zorder::PLAYER,1,1,color)
-			ticked = Gosu::Image.new("./image/correct.png")
-			ticked.draw(ticked_x,ticked_y,Zorder::UPPER,0.1,0.1)
-		# end
+		font = Gosu::Font.new(60)
+		font_x = 1150
+		font_y = 100
+		margin_right = 20
+		message = 'Passed'
+		ticked_y = font_y+5
+		ticked_x = font_x + font.text_width(message)+margin_right
+		color = get_font_color()
+		font.draw(message,font_x,font_y,Zorder::PLAYER,1,1,color)
+		ticked = Gosu::Image.new("./image/correct.png")
+		ticked.draw(ticked_x,ticked_y,Zorder::UPPER,0.1,0.1)
 	end
 	
 	# Draw the level of difficulty on screen
